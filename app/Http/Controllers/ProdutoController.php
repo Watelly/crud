@@ -19,7 +19,7 @@ class ProdutoController extends Controller
         $produtos = Produto::latest()->paginate(5);
 
         return view('produtos.index',compact('produtos')) 
-            ->with('i',(request()->imput('page',1)-1)*5); 
+            ->with('i',(request()->input('page',1)-1)*5); 
 
     }
 
@@ -37,7 +37,7 @@ class ProdutoController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'descicao' => 'required',
+            'descricao' => 'required',
             'qtd' => 'required',
             'precoUnitario' => 'required',
             'precoVenda' => 'required',
