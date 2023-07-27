@@ -72,7 +72,7 @@ class ProdutoController extends Controller
     public function update(Request $request, Produto $produto): RedirectResponse 
     {
         $request->validate([
-            'decricao' => 'required',
+            'descricao' => 'required',
             'qtd' => 'required',
             'precoUnitario' => 'required',
             'precoVenda' => 'required',
