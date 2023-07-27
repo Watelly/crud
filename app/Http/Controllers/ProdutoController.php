@@ -6,6 +6,7 @@ use App\Models\Produto;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 class ProdutoController extends Controller
@@ -34,7 +35,7 @@ class ProdutoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request):RedirectResponse
     {
         $request->validate([
             'descricao' => 'required',
@@ -42,10 +43,10 @@ class ProdutoController extends Controller
             'precoUnitario' => 'required',
             'precoVenda' => 'required',
         ]);
-
-        Produto::created($request->all());
-
-        return redirect()-> route('produtos.index')
+        
+       Produto::create($request->all());
+        
+                return redirect()-> route('produtos.index')
                         -> with('success','Produto criado com sucesso.');
 
     }
